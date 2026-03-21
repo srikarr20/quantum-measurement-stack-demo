@@ -2,6 +2,8 @@
 # Quantum Measurement Stack
 
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19153014.svg)](https://doi.org/10.5281/zenodo.19153014)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18075090.svg)]
 
 **Authoritative QMCTB-01 v1.0 archive:**  
@@ -89,8 +91,14 @@ is specified in **DEFINITION.md**.
 
 If you use this framework, please cite:
 
-S. Rallabandi, *Quantum Measurement & Control Test Bench (QMCTB-01): Detector Plane
-Causality Benchmark*, Zenodo (2025).  
-
+**Primary (Authoritative Benchmark):**
+S. Rallabandi, *Quantum Measurement & Control Test Bench (QMCTB-01): Detector Plane Causality Benchmark*, Zenodo (2025).
 https://doi.org/10.5281/zenodo.18075090
+
+**Extended Benchmark Suite (Includes QMCTB-02):**
+S. Rallabandi, *Quantum Measurement Stack Benchmarks: QMCTB-01 (Causality) and QMCTB-02 (Coherence Transfer)*, Zenodo (2026).
+https://doi.org/10.5281/zenodo.19153014
+
+QMCTB-01 establishes detector-plane causality, while QMCTB-02 characterizes the detector coherence transfer function V(σ), including extraction of σ_c and k.
+
 
