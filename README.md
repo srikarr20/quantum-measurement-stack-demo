@@ -1,25 +1,53 @@
 
 # Quantum Measurement Stack
 
+### Imprint Hypothesis
 
-# QMCTB-02 v3 — Interpretation
+# Quantum Measurement Stack
+
+## QMCTB-02 (v3) — Detector Coherence Transfer Function
+
+![QMCTB-02 Result](artifacts/qmctb02_v3_final.png)
 
 The detector coherence transfer function demonstrates a sharp transition in interference visibility as detector phase noise increases.
 
-A critical threshold is observed at:
-
+**Critical threshold:**
 σ_c ≈ 2.38 rad
 
-Below this threshold, coherence is preserved and interference visibility remains high.
+- Below this threshold → coherence preserved, strong interference  
+- Above this threshold → rapid visibility collapse  
 
-Above this threshold, visibility collapses rapidly, indicating loss of coherence.
+Model fidelity:
+R² ≈ 0.9986
 
-This behavior supports the Imprint Hypothesis:
+This provides quantitative support for the Imprint Hypothesis:
 
-Wave-like behavior is not fundamental but arises as a contextual imprint of particle–field interactions, which collapses at the detector plane when correlation fidelity is lost.
+Wave-like behavior emerges as a contextual imprint of particle–field interactions and collapses at the detector plane when coherence is lost.
 
-Thus, measurement outcomes are determined by detector-plane coherence preservation, not by intrinsic wave collapse.
+---
 
+## Imprint Hypothesis
+
+- Summary: `docs/hypothesis/Imprint_Hypothesis_Handout.pdf`
+- Full paper: `docs/hypothesis/The Imprint Hypothesis.pdf`
+
+---
+
+## Detector Plane Imaging (DPI) Framework
+
+This work is part of a broader measurement framework:
+
+https://github.com/srikarr20/detector-plane-imaging
+
+DPI models coherence evolution prior to detection and establishes the detector plane as the locus of measurement outcomes.
+
+QMCTB-02 provides quantitative validation of this framework by demonstrating a detector-driven coherence transition.
+
+---
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19153014.svg)](https://doi.org/10.5281/zenodo.19153014)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18075090.svg)]
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19153014.svg)](https://doi.org/10.5281/zenodo.19153014)
 
