@@ -1,3 +1,47 @@
+# Quantum Measurement Stack
+
+## QMCTB-02 (v3.1) — Detector Coherence Transfer Function
+
+![QMCTB-02 Result](artifacts/qmctb02_final.png)
+
+---
+
+## Overview
+
+QMCTB-02 implements a simulation framework to study interference visibility under detector-plane phase noise using a double-slit system with Fresnel propagation and detector modeling.
+
+The system reveals a **nonlinear coherence transition**, where visibility does not decay smoothly but instead exhibits a sharp threshold behavior.
+
+---
+
+## Key Result
+
+**Coherence threshold:**
+σ_c ≈ 2.37 rad  
+R² ≈ 0.999  
+
+- Below σ_c → high visibility (coherence preserved)  
+- Above σ_c → rapid visibility collapse  
+
+This behavior deviates from standard exponential decoherence models and suggests a **threshold-like detector response**.
+
+---
+
+## Interpretation
+
+The results support the **Imprint Hypothesis**:
+
+> Wave-like behavior emerges as a contextual imprint of particle–field interactions and collapses at the detector plane when correlation fidelity is lost.
+
+Interference visibility behaves as a **detector-plane transfer function**, indicating that measurement architecture plays a direct role in observed coherence.
+
+---
+
+## Run the Simulation
+
+```bash
+python run_qmctb02_v3_1.py
+
 
 # Quantum Measurement Stack
 
