@@ -39,3 +39,14 @@ artifacts/*
 
 # Allow final figure
 !artifacts/smd_v66_*.png
+
+# Ignore old experiment scripts
+qmctb03.py
+qmctb03_heatmap_v*.py
+qmctb03_v3*.py
+qmctb03_v4*.py
+qmctb03_v5*.py
+qmctb03_v6*.py
+
+# Allow only final version
+!qmctb03_v66.py
