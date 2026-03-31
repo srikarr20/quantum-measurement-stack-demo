@@ -13,3 +13,6 @@ o
 qmctb/artifacts/
 *.png
 
+artifacts/
+__pycache__/
+*.pyc
