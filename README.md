@@ -1,196 +1,115 @@
-# Quantum Measurement Stack
+# Quantum Measurement Stack Demo (QMCTB-03)
 
-## QMCTB-02 (v3.1) — Detector Coherence Transfer Function
-
-![QMCTB-02 Result](artifacts/qmctb02_final.png)
+👉 **Entry point:** `qmctb03_v66.py`
 
 ---
 
 ## Overview
 
-QMCTB-02 implements a simulation framework to study interference visibility under detector-plane phase noise using a double-slit system with Fresnel propagation and detector modeling.
+This project investigates how **detector resolution and noise influence the observability of interference (coherence)** in a simulated double-slit optical system.
 
-The system reveals a **nonlinear coherence transition**, where visibility does not decay smoothly but instead exhibits a sharp threshold behavior.
+Rather than assuming ideal sampling conditions, we model a full **measurement stack**:
+
+- Wave propagation (Fresnel)
+- Detector discretization (pixel binning)
+- Noise processes (shot + read)
+- Visibility estimation
+- Threshold-based observability
 
 ---
 
 ## Key Result
 
-**Coherence threshold:**
-σ_c ≈ 2.37 rad  
-R² ≈ 0.999  
+**Scaling behavior:**
 
-- Below σ_c → high visibility (coherence preserved)  
-- Above σ_c → rapid visibility collapse  
+B_min ∝ d^(-0.77)
 
-This behavior deviates from standard exponential decoherence models and suggests a **threshold-like detector response**.
+where:
+- **d** is the slit separation  
+- **B_min** is the maximum bin size that preserves visibility  
 
 ---
 
 ## Interpretation
 
-The results support the **Imprint Hypothesis**:
+Ideal sampling predicts:
 
-> Wave-like behavior emerges as a contextual imprint of particle–field interactions and collapses at the detector plane when correlation fidelity is lost.
+B ∝ d^(-1)
 
-Interference visibility behaves as a **detector-plane transfer function**, indicating that measurement architecture plays a direct role in observed coherence.
+However, under realistic measurement conditions, we observe a **shallower scaling (b ≈ -0.77)** due to:
+
+- detector noise  
+- pixel averaging (coarse-graining)  
+- threshold-based visibility criteria  
 
 ---
 
-## Run the Simulation
+## Core Insight
+
+> Interference is not simply present or absent.  
+> It becomes **observable only when detector resolution and noise permit stable estimation**.
+
+This leads to a **stochastic observability band**, rather than a sharp resolution boundary.
+
+---
+
+## Methodology
+
+For each slit separation **d**:
+
+1. Generate field via Fresnel propagation  
+2. Apply detector binning (pixel aggregation)  
+3. Add noise (shot + read)  
+4. Compute fringe visibility  
+5. Identify largest bin size satisfying:
+
+V ≥ 0.75
+
+6. Repeat across multiple runs → compute mean and uncertainty  
+
+---
+
+## ▶️ How to Run
 
 ```bash
-python run_qmctb02_v3_1.py
+python qmctb03_v66.py
 
+📊 Output
 
-# Quantum Measurement Stack
+The simulation produces:
 
-### Imprint Hypothesis
+Scaling curve: B_min vs d
+Power-law fit (exponent ≈ -0.77)
+Nyquist reference curve
+Error bars (multi-run variability)
 
-# Quantum Measurement Stack
+Outputs are saved in:
 
-## QMCTB-02 (v3) — Detector Coherence Transfer Function
+artifacts/
 
-![QMCTB-02 Result](artifacts/qmctb02_v3_final.png)
+qmctb03_v66.py         → final experiment (main entry point)
+qmctb03_v6x.py         → development history
+qmctb03_heatmap_*.py   → parameter exploration
+artifacts/             → generated outputs (ignored in git)
 
-The detector coherence transfer function demonstrates a sharp transition in interference visibility as detector phase noise increases.
+🔁 Reproducibility
+Fixed global seed ensures consistency
+Multiple runs provide statistical robustness
+Results are stable across executions
+📚 Scientific Context
 
-**Critical threshold:**
-σ_c ≈ 2.38 rad
+This work builds on established principles that:
 
-- Below this threshold → coherence preserved, strong interference  
-- Above this threshold → rapid visibility collapse  
+visibility estimation is sensitive to detector noise
+interferometric measurements are signal-to-noise limited
+sampling alone does not determine observability
 
-Model fidelity:
-R² ≈ 0.9986
+and extends them by quantifying a noise-conditioned resolution threshold.
 
-This provides quantitative support for the Imprint Hypothesis:
+👤 Author
 
-Wave-like behavior emerges as a contextual imprint of particle–field interactions and collapses at the detector plane when coherence is lost.
+Srikar R
 
----
+📄 License
 
-## Imprint Hypothesis
-
-- Summary: `docs/hypothesis/Imprint_Hypothesis_Handout.pdf`
-- Full paper: `docs/hypothesis/The Imprint Hypothesis.pdf`
-
----
-
-## Detector Plane Imaging (DPI) Framework
-
-This work is part of a broader measurement framework:
-
-https://github.com/srikarr20/detector-plane-imaging
-
-DPI models coherence evolution prior to detection and establishes the detector plane as the locus of measurement outcomes.
-
-QMCTB-02 provides quantitative validation of this framework by demonstrating a detector-driven coherence transition.
-
----
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19153014.svg)](https://doi.org/10.5281/zenodo.19153014)
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18075090.svg)]
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19153014.svg)](https://doi.org/10.5281/zenodo.19153014)
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18075090.svg)]
-
-**Authoritative QMCTB-01 v1.0 archive:**  
-https://doi.org/10.5281/zenodo.18075090
-
-The **Quantum Measurement Stack (QMS)** is an instrumentation-focused framework
-that treats quantum measurement as a causally ordered pipeline, rather than a
-single abstract event.
-
-The framework operationally localizes irreversible information loss at the **detector plane**,
-defined as the complete detector–electronics–software measurement pipeline.
-
-
----
-
-## Protocol Status: QMCTB v1.0 (Frozen)
-
-The **QMCTB v1.0 detector-plane causality benchmark** is **frozen**.
-
-This means:
-- The measurement boundary definition is fixed
-- The causal decomposition is fixed
-- Benchmark logic, pass/fail criteria, and interpretation rules are fixed
-- No parameter, algorithmic, or structural changes are permitted within v1.0
-
-The frozen protocol specification and custodial scope are defined in:
-
-📄 **`QMCTB-01_v1.0_Freeze_and_Custody.md`**
-
-Future extensions or alternative benchmarks will be released only under new
-version identifiers and will not retroactively modify QMCTB v1.0.
-
----
-
-## Canonical Measurement Stack
-
-![Quantum Measurement Stack](./qmctb/artifacts/QMCTB-01_Measurement_Stack_BlockDiagram.png)
-
-
-**Measurement boundary (non-negotiable):**  
-The detector plane includes detector material, conversion stages, readout
-electronics, digitization, firmware, software reconstruction, and output
-generation. Human observation occurs only after this boundary and has no causal
-influence on coherence preservation.
-
----
-
-## Repository Structure
-
-This repository contains a modular implementation of the Quantum Measurement
-Stack:
-
-- **imprint/** — Pre-measurement imprint field dynamics (observer-free)
-- **detector/** — Detector-plane imaging concepts
-- **daq/** — Data acquisition integrity
-- **diagnostics/** — Visibility, fidelity, and coherence diagnostics
-- **qcs/** — Quantum Control System layer
-- **qmctb/** — QMCTB-01 detector-plane causality benchmark
-- **entanglement_recorder/** — Prototype entanglement recording architecture
-
-Each module documents a single layer’s responsibilities and interfaces.
-
----
-
-## Benchmark: QMCTB-01
-
-QMCTB-01 is a reproducible detector-plane causality benchmark demonstrating that
-interference visibility is determined by detector architecture, not photon
-accumulation.
-
-- Intensity-only detection irreversibly suppresses interference
-- Correlation-preserving detection yields immediate, stable fringe geometry
-
-See **qmctb/** for code, methods, and reference artifacts.
-
----
-
-## Formal Definition
-
-The authoritative definition of stack ordering, causality, and irreversibility
-is specified in **DEFINITION.md**.
-
----
-
-## Citation
-
-If you use this framework, please cite:
-
-**Primary (Authoritative Benchmark):**
-S. Rallabandi, *Quantum Measurement & Control Test Bench (QMCTB-01): Detector Plane Causality Benchmark*, Zenodo (2025).
-https://doi.org/10.5281/zenodo.18075090
-
-**Extended Benchmark Suite (Includes QMCTB-02):**
-S. Rallabandi, *Quantum Measurement Stack Benchmarks: QMCTB-01 (Causality) and QMCTB-02 (Coherence Transfer)*, Zenodo (2026).
-https://doi.org/10.5281/zenodo.19153014
-
-QMCTB-01 establishes detector-plane causality, while QMCTB-02 characterizes the detector coherence transfer function V(σ), including extraction of σ_c and k.
-
-
+MIT (or specify your license)
