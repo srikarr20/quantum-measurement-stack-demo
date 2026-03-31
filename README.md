@@ -1,4 +1,8 @@
+[![DOI](https://zenodo.org/badge/19353701.svg)](https://doi.org/10.5281/zenodo.19353701)
+
+
 # Quantum Measurement Stack Demo (QMCTB-03)
+
 
 👉 **Entry point:** `qmctb03_v66.py`
 
@@ -113,3 +117,15 @@ Srikar R
 📄 License
 
 MIT (or specify your license)
+
+
+---
+
+## 📖 Citation
+
+If you use this work, please cite:
+
+Srikar R.  
+*Quantum Measurement Stack Demo (QMCTB-03)*  
+Zenodo, 2026.  
+DOI: https://doi.org/10.5281/zenodo.19353701
