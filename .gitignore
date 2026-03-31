@@ -16,3 +16,26 @@ qmctb/artifacts/
 artifacts/
 __pycache__/
 *.pyc
+
+# Ignore intermediate scripts
+qmctb03_v3*.py
+qmctb03_v4*.py
+qmctb03_v5*.py
+qmctb03_v6*.py
+
+# Allow ONLY final version
+!qmctb03_v66.py
+
+# Ignore artifacts except final
+artifacts/*
+!artifacts/smd_v66_*.png
+
+
+# Ignore all artifacts
+artifacts/*
+
+# But allow folder itself
+!artifacts/
+
+# Allow final figure
+!artifacts/smd_v66_*.png
